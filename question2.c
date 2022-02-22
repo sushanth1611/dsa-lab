@@ -45,18 +45,32 @@ int dequeue(struct Queue* q){
     }
 }
 
+void display(struct Queue *q){
+    for(int i=q->head;i<q->tail;i++){
+        printf("%d ",q->array[i]);
+    }
+}
+
 int main(){
     struct Queue *qptr = create_queue(100);
     printf("Queue of capacity %d is created.\n",qptr->capacity);\
     enqueue(qptr,20);
     enqueue(qptr,30);
     enqueue(qptr,40);
-    printf("The dequeued element is: %d",dequeue(qptr));
+    printf("The queue is: \n");
+    display(qptr);
+    printf("\nThe dequeued element is: %d\n",dequeue(qptr));
+    printf("The queue after dequeue is:\n");
+    display(qptr);
     return 0;
 }
 
 /*
 Output:
 Queue of capacity 100 is created.
+The queue is:
+20 30 40
 The dequeued element is: 20
+The queue after dequeue is:
+30 40
 */

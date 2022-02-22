@@ -42,6 +42,20 @@ int dequeue(struct Queue *q){
     }
 }
 
+void display(struct Queue* q){
+    if(q->head == q->tail){
+        printf("%d\n",q->head->data);
+    }
+    else{
+        struct Node *h = q->head;
+        while(h!=q->tail){
+            printf("%d ",h->data);
+            h = h->next;
+        } 
+        printf("%d\n",q->tail->data);
+    }
+}
+
 int main(){
     struct Queue *qptr = (struct Queue*)malloc(sizeof(struct Queue *));
     qptr->head = NULL;
@@ -49,10 +63,18 @@ int main(){
     enqueue(qptr,10);
     enqueue(qptr,20);
     enqueue(qptr,30);
-    printf("The dequeued element is: %d",dequeue(qptr));
+    printf("The queue is: \n");
+    display(qptr);
+    printf("The dequeued element is: %d\n",dequeue(qptr));
+    printf("The queue after dequeue is: \n");
+    display(qptr);
 }
 
 /*
 Output:
+The queue is: 
+10 20 30
 The dequeued element is: 10
+The queue after dequeue is: 
+20 30
 */

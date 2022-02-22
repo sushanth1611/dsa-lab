@@ -53,6 +53,22 @@ int dequeue(struct Queue *q){
     }
 }
 
+void display(struct Queue *q){
+    if(q->tail >= q->head){
+        for(int i=q->head;i<=q->tail;i++){
+            printf("%d ",q->array[i]);
+        }
+    }
+    else{
+        for(int i=q->head;i<q->size;i++){
+            printf("%d ",q->array[i]);
+        }
+        for(int i=0;i<=q->tail;i++){
+            printf("%d ",q->array[i]);
+        }
+    }
+}
+
 int main(){
     struct Queue *qptr = create_queue(5);
     printf("The queue of capacity %d is created.\n",qptr->size);
@@ -62,9 +78,15 @@ int main(){
     enqueue(qptr,40);
     enqueue(qptr,50);
     enqueue(qptr,60);
-    printf("The dequeued element is : %d\n",dequeue(qptr));
+    printf("The queue is :\n");
+    display(qptr);
+    printf("\nThe dequeued element is : %d\n",dequeue(qptr));
     enqueue(qptr,60);
-    printf("The dequeued element is : %d\n",dequeue(qptr));
+    printf("The queue is :\n");
+    display(qptr);
+    printf("\nThe dequeued element is : %d\n",dequeue(qptr));
+    printf("The queue is :\n");
+    display(qptr);
     return 0;
 }
 
@@ -72,6 +94,12 @@ int main(){
 Output:
 The queue of capacity 5 is created.
 Queue is full.
+The queue is :
+10 20 30 40 50
 The dequeued element is : 10
+The queue is :
+20 30 40 50 60
 The dequeued element is : 20
+The queue is :
+30 40 50 60
 */

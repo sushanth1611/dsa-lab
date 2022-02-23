@@ -17,7 +17,7 @@ struct Queue* create_queue(int capacity){
 }
 
 void enqueue(struct Queue *q,int data){
-    if(q->head == 0 && q->tail == q->size-1){
+    if((q->tail==q->capacity-1 && q->head==0)||(q->head==q->tail+1)){
         printf("Queue is full.\n");
         return;
     }
